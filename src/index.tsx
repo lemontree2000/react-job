@@ -1,11 +1,33 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import registerServiceWorker from './registerServiceWorker';
+import { createStore, applyMiddleware } from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+
+
 import App from './App';
 import './index.css';
-import registerServiceWorker from './registerServiceWorker';
+import { counter } from './redux.index';
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
-);
+const store = createStore(counter, composeWithDevTools(
+  applyMiddleware(thunk)
+));
+render();
+
+
+function render() {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root') as HTMLElement
+  );
+}
+
+store.subscribe(render);
+
+
+
 registerServiceWorker();
