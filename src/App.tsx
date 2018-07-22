@@ -1,6 +1,9 @@
+import logo from './logo.svg';
 import * as React from 'react';
 import './App.css';
-import logo from './logo.svg';
+// import {Button} from 'antd';
+import {Button} from 'antd-mobile';
+
 class App extends React.Component {
   public render() {
     return (
@@ -12,9 +15,10 @@ class App extends React.Component {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <Button type="primary">hahahahah</Button>
       </div>
     );
-  }
+  } 
 }
 
 export default App;

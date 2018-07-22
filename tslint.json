@@ -12,6 +12,7 @@
     ],
     "only-arrow-functions": [
       false
-    ]
+    ],
+    "ordered-imports": [false]
   }
 }
