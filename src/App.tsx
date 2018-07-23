@@ -1,12 +1,9 @@
-import * as React from 'react';
 import { Button } from 'antd-mobile';
-import { addGun, removeGun, addGunAsync } from './redux.index';
+import * as React from 'react';
 import { connect } from 'react-redux';
-
-
-import logo from './logo.svg';
 import './App.css';
-
+import logo from './logo.svg';
+import { addGun, addGunAsync, removeGun } from './redux.index';
 
 export interface Iprops {
   num?: any,
@@ -15,22 +12,30 @@ export interface Iprops {
   addGunAsync?: any
 }
 
+// 组建需要的属性
+const mapStateToProps = (state: any) => {
+  return { num: state }
+}
+
+// 组建需要的方法
+const actionsCreators = {
+  addGun,
+  addGunAsync,
+  removeGun
+}
+
+@(connect(mapStateToProps, actionsCreators) as any)
 class App extends React.Component<Iprops, {}> {
   constructor(props: any) {
     super(props);
-    // this.removeGun = this.removeGun.bind(this);
-    // this.addGun = this.addGun.bind(this);
   }
   public removeGun = () => {
-    // this.props.store.dispatch(removeGun())
     this.props.removeGun();
   }
   public addGun = () => {
-    // this.props.store.dispatch(addGun());
     this.props.addGun();
   }
   public addAsyncGun = () => {
-    // this.props.store.dispatch(addGun());
     this.props.addGunAsync();
   }
 
@@ -57,14 +62,6 @@ class App extends React.Component<Iprops, {}> {
   }
 }
 
-const mapStateToProps = (state: any) => {
-  return { num: state }
-}
 
-const actionsCreators = {
-  addGun,
-  addGunAsync,
-  removeGun
-}
 
-export default connect(mapStateToProps, actionsCreators)(App);
+export default App;
