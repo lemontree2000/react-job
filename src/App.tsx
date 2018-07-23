@@ -48,10 +48,7 @@ class App extends React.Component<Iprops, {}> {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <p>机关枪总数是{num}把</p>
+        <p style={{fontSize: 20}}>机关枪总数是{num}把</p>
         <Button type="primary" onClick={this.addGun}>加一把机关枪</Button>
         <br />
         <Button type="primary" onClick={this.removeGun}>减一把机关枪</Button>

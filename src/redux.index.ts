@@ -20,13 +20,13 @@ export function addGun() {
 };
 
 export function removeGun() {
-    return { type: REMOVE_GUN };
+    return {type: REMOVE_GUN};
 };
 
-export function addGunAsync() {
-    return (dispatch: any) => {
+export function addGunAsync(){
+    return (dispatch:any) => {
         setTimeout(() => {
             dispatch(addGun());
-        }, 2000);
+        },2000);
     }
 }

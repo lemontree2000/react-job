@@ -5,9 +5,12 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 
-import App from './App';
+// import App from './App';
+import Dashboard from './Dashboard';
+import Auth from './Auth';
 import './index.css';
 import { counter } from './redux.index';
 
@@ -18,7 +21,16 @@ const store = createStore(counter, composeWithDevTools(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App /> 
+    <BrowserRouter>
+      <div>
+        <Switch>
+          <Route path="/login" component={Auth} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Redirect to="/dashboard" />
+        </Switch>
+      </div>
+      {/* <App /> */}
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
