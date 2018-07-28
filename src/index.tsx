@@ -12,9 +12,9 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from './Dashboard';
 import Auth from './Auth';
 import './index.css';
-import { counter } from './redux.index';
+import reducers from './reducer';
 
-const store = createStore(counter, composeWithDevTools(
+const store = createStore(reducers, composeWithDevTools(
   applyMiddleware(thunk)
 ));
 
@@ -29,7 +29,6 @@ ReactDOM.render(
           <Redirect to="/dashboard" />
         </Switch>
       </div>
-      {/* <App /> */}
     </BrowserRouter>
   </Provider>,
   document.getElementById('root') as HTMLElement

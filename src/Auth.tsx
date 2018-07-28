@@ -1,9 +1,30 @@
 import React from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 
-class Auth extends React.Component {
+import { Button } from "antd-mobile";
+import { login } from "./Auth.redux";
+const mapStateToProps = (state: any) => {
+    return {isAuth: state.auth.isAuth}
+}
+
+interface Iprops {
+    isAuth?: boolean,
+    login?: () =>{}
+}
+
+@(connect(mapStateToProps, {login}) as any)
+class Auth extends React.Component<Iprops, any> {
     public render() {
-        return <div>Auth</div>
+        console.log(this.props);
+        return (
+            <div>
+                {this.props.isAuth ? <Redirect to="/dashboard"/> : null}
+                <h2>你没有权限,需要登陆才能看</h2>
+                <Button onClick={this.props.login}>登陆</Button>
+            </div>
+        )
     }
 }
 

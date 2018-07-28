@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import logo from './logo.svg';
-import { addGun, addGunAsync, removeGun } from './redux.index';
+import { addGun, addGunAsync, removeGun } from './index.redux';
 
 export interface Iprops {
   num?: any,
@@ -14,7 +14,7 @@ export interface Iprops {
 
 // 组建需要的属性
 const mapStateToProps = (state: any) => {
-  return { num: state }
+  return { num: state.counter }
 }
 
 // 组建需要的方法
