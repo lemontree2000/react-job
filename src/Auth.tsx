@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-
+import axios from 'axios';
 
 import { Button } from "antd-mobile";
 import { login } from "./Auth.redux";
@@ -16,6 +16,13 @@ interface Iprops {
 
 @(connect(mapStateToProps, {login}) as any)
 class Auth extends React.Component<Iprops, any> {
+    public componentDidMount() {
+        axios.get('/api/data').then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
     public render() {
         console.log(this.props);
         return (
