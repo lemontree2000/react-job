@@ -4,7 +4,7 @@ import { Redirect } from "react-router-dom";
 import axios from 'axios';
 
 import { Button } from "antd-mobile";
-import { login } from "./Auth.redux";
+import { login } from "./store/reducer/Auth.redux";
 const mapStateToProps = (state: any) => {
     return {isAuth: state.auth.isAuth}
 }

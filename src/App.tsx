@@ -1,9 +1,9 @@
 import { Button } from 'antd-mobile';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import './App.css';
-import logo from './logo.svg';
-import { addGun, addGunAsync, removeGun } from './index.redux';
+import './assets/style/App.css';
+import logo from './assets/images/logo.svg';
+import { addGun, addGunAsync, removeGun } from './store/reducer/index.redux';
 
 export interface Iprops {
   num?: any,

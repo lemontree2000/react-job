@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route,Redirect} from 'react-router-dom'
 import { connect } from 'react-redux';
-import { logout } from './Auth.redux';
+import { logout } from './store/reducer/Auth.redux';
 import {Button} from 'antd-mobile';
 
 import App from './App';
