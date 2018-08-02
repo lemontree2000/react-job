@@ -3,6 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import './assets/style/App.css';
 import logo from './assets/images/logo.svg';
+// import logo from './component/Logo/job.png';
 import { addGun, addGunAsync, removeGun } from './store/reducer/index.redux';
 
 export interface Iprops {
