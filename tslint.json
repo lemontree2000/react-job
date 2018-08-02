@@ -13,6 +13,8 @@
     "only-arrow-functions": [
       false
     ],
-    "ordered-imports": [false]
+    "no-debugger": [false],
+    "ordered-imports": [false],
+    "jsx-no-lambda": [false]
   }
 }

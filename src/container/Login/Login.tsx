@@ -1,15 +1,18 @@
 import React from 'react';
 import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile';
 
+
 import Logo from '../../component/Logo/Logo';
 
-interface Iprops {
+interface ILoginProps {
     resgiter?: () => {},
     history?: any
 }
 
-class Login extends React.Component<Iprops, {}> {
-    constructor(props: Iprops) {
+
+
+class Login extends React.Component<ILoginProps, {}> {
+    constructor(props: ILoginProps) {
         super(props);
         this.register = this.register.bind(this);
     }
@@ -21,6 +24,7 @@ class Login extends React.Component<Iprops, {}> {
     public render() {
         return (
             <div>
+              
                 <Logo />
                 <WingBlank>
                     <List>
