@@ -1,9 +1,10 @@
 import React from 'react';
 import { List, InputItem, WingBlank, Picker, WhiteSpace, Button } from 'antd-mobile';
+import { connect } from 'react-redux';
 
 import Logo from '../../component/Logo/Logo';
 import { district } from '../../config/constant';
-
+import { user } from '../../store/reducer/user.redux';
 
 
 // interface IdistrictItem {
@@ -18,6 +19,9 @@ interface IRegisterState {
     repeatPwd?: string,
     type?: [string]
 }
+@(connect(
+    (state:) => state.user
+) as any)
 class Register extends React.Component<{}, IRegisterState> {
     constructor(props: {}) {
         super(props);
