@@ -4,26 +4,33 @@ import { connect } from 'react-redux';
 
 import Logo from '../../component/Logo/Logo';
 import { district } from '../../config/constant';
-import { user } from '../../store/reducer/user.redux';
-
+import { regisger } from '../../store/reducer/user.redux';
+import { IregisterData } from '../../types/user';
+import './style.css';
 
 // interface IdistrictItem {
 //     value: string,
 //     label: string
 // }
-
+interface IRegisterProps {
+    user: IregisterData,
+    regisger: typeof regisger
+}
 
 interface IRegisterState {
-    user?: string,
-    pwd?: string,
-    repeatPwd?: string,
-    type?: [string]
+    user: string,
+    pwd: string,
+    repeatPwd: string,
+    type: [string]
 }
 @(connect(
-    (state:) => state.user
+    (state: any) => {
+        return { user: state.User };
+    },
+    { regisger }
 ) as any)
-class Register extends React.Component<{}, IRegisterState> {
-    constructor(props: {}) {
+class Register extends React.Component<IRegisterProps, IRegisterState> {
+    constructor(props: IRegisterProps) {
         super(props);
         this.state = {
             pwd: '',
@@ -35,6 +42,8 @@ class Register extends React.Component<{}, IRegisterState> {
     }
     public handleResgister() {
         console.log(this.state);
+        console.log(this.props);
+        this.props.regisger(this.state as any);
     }
     public handleChange(key: string, val: any) {
         this.setState({
@@ -47,6 +56,7 @@ class Register extends React.Component<{}, IRegisterState> {
                 <Logo />
                 <WingBlank>
                     <List>
+                        <p className="error-msg">{this.props.user.msg ? this.props.user.msg : null}</p>
                         <InputItem
                             onChange={v => this.handleChange('user', v)}
                         >用户名</InputItem>
