@@ -7,6 +7,7 @@ const ERROR_MSG = 'ERROR_MSG';
 
 
 const initState = {
+    redirectTo: '',
     isAuth: false,
     msg: '',
     user: '',
@@ -19,7 +20,7 @@ const initState = {
 export function User(state = initState, action: { type: string, payload: IregisterData, msg: string }) {
     switch (action.type) {
         case REGISTER_SUCCESS:
-            return { ...state, isAuth: true, msg: '', ...action.payload }
+            return { ...state, isAuth: true,redirectTo: '', msg: '', ...action.payload }
         case ERROR_MSG:
             return { ...state, isAuth: false, msg: action.msg }
         default:
@@ -47,7 +48,7 @@ export function regisger(registerData: IregisterData) {
         return errorMsg('密码和确认密码有误');
     }
     return (dispath: Dispatch) => {
-        axios.post('/user/rregister', { user, pwd, type })
+        axios.post('/api/user/register', { user, pwd, type })
             .then(res => {
                 if (res.status === 200 && res.data.code === 0) {
                     dispath(regisgerSuccess({ user, pwd, type }))

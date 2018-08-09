@@ -35,7 +35,7 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
         this.state = {
             pwd: '',
             repeatPwd: '',
-            type: ['boss'],
+            type: ['BOSS'],
             user: '',
         }
         this.handleResgister = this.handleResgister.bind(this);
@@ -68,7 +68,7 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
                             type="password"
                             onChange={v => this.handleChange('repeatPwd', v)}
                         >确认密码</InputItem>
-                        <Picker onChange={v => this.handleChange('type', v)} data={district} value={this.state.type} cols={1} className="forss">
+                        <Picker onChange={v => this.handleChange('type', v)} data={district}  value={this.state.type} cols={1} className="forss">
                             <List.Item arrow="horizontal">用户类型</List.Item>
                         </Picker>
                     </List>
