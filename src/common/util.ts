@@ -4,11 +4,13 @@
  * @param avatar 用户头像
  */
 
-export function getRedirectPath(type: string, avatar: string) {
+
+export function getRedirectPath({ type, avatar }: { type: string, avatar?: string }) {
     // 根据用户信息, 返回跳转地址
     // user.type /boss /genius
     // user.avatar /bossInfo /geniusInfo
-    let url = (type === 'boss') ? '/boss' : '/genius';
+    console.log(type.toString());
+    let url = (type.toString() === 'boss') ? '/boss' : '/genius';
     if (!avatar) {
         url += 'Info'
     }

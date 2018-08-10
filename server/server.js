@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const app = express();
 
 // // 中间件
-app.use(cookieParser());
+app.use(cookieParser('userid'));
 app.use(bodyParser.json());
 
 // 路由

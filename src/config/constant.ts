@@ -1,7 +1,7 @@
 export const district = [
     {
         label: 'BOSS',
-        value: 'BOSS'
+        value: 'boss'
     },
     {
         label: '牛人',

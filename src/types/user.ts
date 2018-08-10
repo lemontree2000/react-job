@@ -2,6 +2,7 @@ export interface IregisterData {
     user: string,
     pwd: string,
     repeatPwd?: string,
-    type: string,
-    msg?: string
+    type?: string,
+    msg?: string,
+    redirectTo?: string
 }
