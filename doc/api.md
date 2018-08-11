@@ -18,7 +18,7 @@
 ## 1.登陆
 
 **请求URL：** 
-- ` http://localhost:8081/user/login `
+- ` http://192.168.1.4:8081/user/login `
   
 **请求方式：**
 - POST 
@@ -54,7 +54,7 @@
 ## 2.注册
 
 **请求URL：** 
-- ` http://localhost:8081/user/register `
+- ` http://192.168.1.4:8081/user/register `
   
 **请求方式：**
 - POST 
@@ -84,7 +84,7 @@
 ## 3.获取用户列表
 
 **请求URL：** 
-- ` http://localhost:8081/user/list `
+- ` http://192.168.1.4:8081/user/list `
   
 **请求方式：**
 - GET
@@ -132,7 +132,7 @@
 ## 4.更新用户信息
 
 **请求URL：** 
-- ` http://localhost:8081/user/update `
+- ` http://192.168.1.4:8081/user/update `
   
 **请求方式：**
 - POST 
@@ -163,7 +163,7 @@
 ## 5.删除用户
 
 **请求URL：** 
-- ` http://localhost:8081/user/delete `
+- ` http://192.168.1.4:8081/user/delete `
   
 **请求方式：**
 - POST 
