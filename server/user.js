@@ -42,7 +42,7 @@ Router.post('/register', (req, res) => {
         if (doc) {
             return res.json({ code: 1, msg: '用户名重复' })
         }
-        User.create({ user, pwd: md5Pwd(pwd), type }, (e, d) => {
+        User.create({ user, pwd: md5Pwd(pwd), type}, (e, d) => {
             if (e) {
                 return res.json({ code: 1, msg: '后端出错了' });
             }
@@ -55,6 +55,7 @@ Router.post('/register', (req, res) => {
 Router.post('/login', (req, res) => {
     console.log(req.body);
     const { pwd, user } = req.body;
+    if(!user || !pwd) return res.json({code: 1,msg: '缺少必要参数'})
     User.findOne({ user, pwd: md5Pwd(pwd) }, { pwd: 0 }, (e, doc) => {
         if (!doc) {
             return res.json({ code: 1, msg: '用户名或密码错误' });
@@ -67,6 +68,7 @@ Router.post('/login', (req, res) => {
 // 删除
 Router.post('/delete', (req, res) => {
     const { _id } = req.body;
+    if(!_id) return res.json({code: 1,msg: '缺少必要参数'})
     User.remove({ _id: _id }, (err, doc) => {
         console.log(doc);
         if (err) {
@@ -82,6 +84,7 @@ Router.post('/delete', (req, res) => {
 // 更新
 Router.post('/update', (req, res) => {
     const { pwd, _id } = req.body;
+    if(!_id) return res.json({code: 1,msg: '缺少必要参数'})
     const updateData = pwd ? { ...req.body, pwd: md5Pwd(pwd) } : req.body
     User.updateOne({ _id }, updateData, (err, doc) => {
         if (err) {
