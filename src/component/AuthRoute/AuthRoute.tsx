@@ -1,12 +1,18 @@
 import React from 'react'
 import Axios from 'axios';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { loadData } from '../../store/reducer/user.redux';
 
 // props继承RouteComponentProps
 // 使this.prop可以使用history等对象
 export interface IAuthPorps extends RouteComponentProps<any> {
-    
+    loadData: (data: any) => {}
 }
+@(connect(
+    null,
+    { loadData }
+) as any)
 
 @(withRouter as any)
 class AuthRouter extends React.Component<IAuthPorps, {}> {
@@ -30,6 +36,7 @@ class AuthRouter extends React.Component<IAuthPorps, {}> {
                 if (res.status === 200) {
                     if (res.data.code === 0) {
                         // 有登陆信息
+                        this.props.loadData(res.data.data);
                     } else {
                         // 没有登陆信息
                         console.log(1);
@@ -44,7 +51,7 @@ class AuthRouter extends React.Component<IAuthPorps, {}> {
 
     }
     public render() {
-        return <div>判断用户信息</div>
+        return <span/>
     }
 }
 

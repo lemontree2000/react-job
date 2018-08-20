@@ -5,8 +5,11 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import './common/http';
 import registerServiceWorker from './registerServiceWorker';
+
 import Login from './container/Login/Login';
 import Register from './container/Register/Register';
+import BossInfo from './container/BossInfo/BossInfo';
+
 import store from './store/index';
 import './assets/style/index.css';
 import AuthRoute, { IAuthPorps } from './component/AuthRoute/AuthRoute';
@@ -21,11 +24,12 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <div>
-          {/* 因为没写props会默认给组建赋值{} ,所以与组建内部的props类型不一致 */}
-          <AuthRoute {...{} as IAuthPorps} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/boss" component={Boss} />
+        {/* 因为没写props会默认给组建赋值{} ,所以与组建内部的props类型不一致 */}
+        <AuthRoute {...{} as IAuthPorps} />
+        <Route path="/bossinfo" component={BossInfo} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/boss" component={Boss} />
       </div>
     </BrowserRouter>
   </Provider>,
