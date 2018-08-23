@@ -22,7 +22,7 @@ class AvatarSelector extends React.Component<IAvatarProps, any> {
                 text: v
             }));
 
-        const avater = this.state.icon ? <div><span>已选择的头像</span><img width="20" src={this.state.icon} alt="" /></div> : '请选择头像';
+        const avater = this.state.icon ? <div><span>已选择的头像</span><img width="20" src={this.state.icon} alt="" /></div> : <span style={{color:'red'}}>请选择头像</span>;
         
         return (
             <div>

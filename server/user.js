@@ -105,7 +105,7 @@ Router.post('/updateInfo', (req, res) => {
     }
     const body = req.body;
     // const updateData = pwd ? { ...req.body, pwd: md5Pwd(pwd) } : req.body
-    User.findOneAndUpdate(userId, body, (err, doc) => {
+    User.findByIdAndUpdate(userId, body, (err, doc) => {
         if (err) {
             return res.json({ code: 1, msg: '服务器错误' });
         }
