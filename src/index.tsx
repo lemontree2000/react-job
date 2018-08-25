@@ -9,7 +9,7 @@ import registerServiceWorker from './registerServiceWorker';
 import Login from './container/Login/Login';
 import Register from './container/Register/Register';
 import BossInfo from './container/BossInfo/BossInfo';
-// import GeniusInfo from './container/GeniusInfo/GeniusInfo';
+import GeniusInfo from './container/GeniusInfo/GeniusInfo';
 import Dashboard from './component/Dashboard/Dashboard'
 
 import store from './store/index';
@@ -30,7 +30,7 @@ ReactDOM.render(
         <AuthRoute {...{} as IAuthPorps} />
         <Switch>
           <Route path="/bossinfo" component={BossInfo} />
-          {/* <Route path="/geniusinfo" component={GeniusInfo} /> */}
+          <Route path="/geniusinfo" component={GeniusInfo} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           {/* <Route path="/boss" component={Boss} /> */}

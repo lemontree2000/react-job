@@ -1,12 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { NavBar } from 'antd-mobile';
-// import { Route, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import NavLink from '../NavLink/NavLink'
+import Boss from '../Boss/Boss';
 
-function Boss() {
-    return <div>博士</div>
-}
 function Genius() {
     return <div>牛人</div>
 }
@@ -14,7 +12,7 @@ function Msg() {
     return <div>牛人</div>
 }
 function Me() {
-    return <div>牛人</div>
+    return <div>me</div>
 }
 @(connect(
     state => state
@@ -59,10 +57,18 @@ class DashBoard extends React.Component<any, any> {
         const currentNavItem: any = navList.find(v => v.path === pathname) || {};
         return (
             <section>
-                <header>
+                <header className="fixed-header">
                     <NavBar mode="dark">{currentNavItem.title}</NavBar>
                 </header>
-                <section>content</section>
+                <section style={{ marginTop: 45 }}>
+                    <Switch>
+                        {
+                            navList.map((v) => (
+                                <Route key={v.path} component={v.component} path={v.path}/>
+                            ))
+                        }
+                    </Switch>
+                </section>
                 <footer>
                     <NavLink data={navList as any} />
                 </footer>

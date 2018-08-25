@@ -18,7 +18,7 @@ class AvatarSelector extends React.Component<IAvatarProps, any> {
         const avatarList = 'boy,girl,man,woman,bull,chick,crab,hedgehog,hippopotamus,koala,lemur,pig,tiger,whale,zebra'
             .split(',')
             .map(v => ({
-                icon: require(`./image/${v}.png`),
+                icon: require(`../../assets/image/${v}.png`),
                 text: v
             }));
 

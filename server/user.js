@@ -22,8 +22,9 @@ Router.get('/info', (req, res) => {
 
 Router.get('/list', (req, res) => {
     // User.remove({},() =>{});
-
-    User.find({}, (err, doc) => {
+    const { type } = req.query;
+    console.log(type);
+    User.find(type ? { type } : {}, (err, doc) => {
         return res.json({
             code: 0,
             data: doc
