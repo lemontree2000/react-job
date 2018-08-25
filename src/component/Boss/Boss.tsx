@@ -27,15 +27,15 @@ class Boss extends React.Component<any, any> {
                 {
                     this.state.data.map((v: any) => (
                         v.avatar ?
-                            <div>
+                            <div key={v._id}>
                                 <WhiteSpace />
                                 <Card>
                                     <Header thumb={require(`../../assets/image/${v.avatar}.png`)} title={v.user} extra={v.title} />
                                     <Body>
                                         {v.desc.split('\n').map((item: any) => (
-                                            <div key={v}>{item}</div>
+                                            <div key={item}>{item}</div>
                                         ))}
-                                        
+
                                     </Body>
                                 </Card>
                             </div>
