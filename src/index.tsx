@@ -17,11 +17,6 @@ import './assets/style/index.css';
 import AuthRoute, { IAuthPorps } from './component/AuthRoute/AuthRoute';
 
 
-
-// function Boss() {
-//   return <div>boss</div>
-// }
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
@@ -33,7 +28,6 @@ ReactDOM.render(
           <Route path="/geniusinfo" component={GeniusInfo} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          {/* <Route path="/boss" component={Boss} /> */}
           <Route component={Dashboard} />
         </Switch>
       </div>

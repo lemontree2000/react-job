@@ -33,8 +33,9 @@ class Boss extends React.Component<any, any> {
                                     <Header thumb={require(`../../assets/image/${v.avatar}.png`)} title={v.user} extra={v.title} />
                                     <Body>
                                         {v.desc.split('\n').map((item: any) => (
-                                            <p>{item}</p>
+                                            <div key={v}>{item}</div>
                                         ))}
+                                        
                                     </Body>
                                 </Card>
                             </div>
