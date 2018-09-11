@@ -4,16 +4,13 @@ import { NavBar } from 'antd-mobile';
 import { Route, Switch } from 'react-router-dom'
 import NavLink from '../NavLink/NavLink'
 import Boss from '../Boss/Boss';
+import Genius from '../Genius/Genius'
+import Me from '../Me/Me'
 
-function Genius() {
-    return <div>牛人</div>
-}
 function Msg() {
     return <div>牛人</div>
 }
-function Me() {
-    return <div>me</div>
-}
+
 @(connect(
     state => state
 ) as any)
@@ -64,7 +61,7 @@ class DashBoard extends React.Component<any, any> {
                     <Switch>
                         {
                             navList.map((v) => (
-                                <Route key={v.path} component={v.component} path={v.path}/>
+                                <Route key={v.path} component={v.component} path={v.path} />
                             ))
                         }
                     </Switch>
