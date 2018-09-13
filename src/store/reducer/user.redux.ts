@@ -8,6 +8,7 @@ const ERROR_MSG = 'ERROR_MSG';
 // const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 const LOAD_DATA = 'LOAD_DATA';
 const AUTH_SUCCESS = 'AUTH_SUCCESS';
+const LOGOUT = 'LOGOUT';
 
 
 
@@ -32,9 +33,15 @@ export function User(state = initState, action: { type: string, payload: Iregist
             return { ...state, isAuth: true, redirectTo: getRedirectPath(action.payload as any), msg: '', ...action.payload };
         case LOAD_DATA:
             return { ...state, ...action.payload }
+        case LOGOUT:
+            return { ...initState, redirectTo: '/login' }
         default:
             return state;
     }
+}
+
+export function logoutSubmit() {
+    return { type: LOGOUT }
 }
 
 export function update(data: any) {

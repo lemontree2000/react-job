@@ -2,11 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Result, List, WhiteSpace, Modal } from 'antd-mobile';
 // import browserCookies from 'browser-cookies';
+import { logoutSubmit } from '../../store/reducer/user.redux';
 
 const { alert } = Modal;
 @(connect(
     (state: any) => state.User,
-    {}
+    {logoutSubmit}
 ) as any)
 
 class Me extends React.Component<any, any> {
@@ -16,7 +17,7 @@ class Me extends React.Component<any, any> {
     }
     public logout() {
         console.log(this);
-
+        this.props.logoutSubmit();
         // browserCookies.erase('user');
     }
     public render() {
@@ -41,12 +42,12 @@ class Me extends React.Component<any, any> {
             </List>
             <WhiteSpace />
             <List >
-                <Item onClick={()=>{
-                            alert('退出登录', '是否确认退出登录？？', [
-                                { text: 'Cancel', onPress: () => console.log('cancel') },
-                                { text: 'Ok', onPress: () => this.logout() },
-                            ])
-                        }}>
+                <Item onClick={() => {
+                    alert('退出登录', '是否确认退出登录？？', [
+                        { text: 'Cancel', onPress: () => console.log('cancel') },
+                        { text: 'Ok', onPress: () => this.logout() },
+                    ])
+                }}>
                     退出登录
                 </Item>
             </List>
