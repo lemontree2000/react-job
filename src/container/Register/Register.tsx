@@ -8,6 +8,7 @@ import { regisger } from '../../store/reducer/user.redux';
 import { IregisterData } from '../../types/user';
 import './style.css';
 import { Redirect } from 'react-router-dom';
+import JobForm from '../../HOC/JobForm/Jobform';
 
 // interface IdistrictItem {
 //     value: string,
@@ -30,27 +31,21 @@ interface IRegisterState {
     },
     { regisger }
 ) as any)
-class Register extends React.Component<IRegisterProps, IRegisterState> {
+
+@(JobForm as any)
+
+class Register extends React.Component<IRegisterProps | any, IRegisterState> {
     constructor(props: IRegisterProps) {
         super(props);
-        this.state = {
-            pwd: '',
-            repeatPwd: '',
-            type: ['boss'],
-            user: '',
-        }
         this.handleResgister = this.handleResgister.bind(this);
     }
+    public componentDidMount() {
+        this.props.handleChange('type', ['boss'])
+    }
     public handleResgister() {
-        console.log(this.state);
-        console.log(this.props);
-        this.props.regisger(this.state as any);
+        this.props.regisger(this.props.state as any);
     }
-    public handleChange(key: string, val: any) {
-        this.setState({
-            [key]: val
-        } as any)
-    }
+  
     public render() {
         return (
             <div>
@@ -60,17 +55,17 @@ class Register extends React.Component<IRegisterProps, IRegisterState> {
                     <List>
                         <p className="error-msg">{this.props.user.msg ? this.props.user.msg : null}</p>
                         <InputItem
-                            onChange={v => this.handleChange('user', v)}
+                            onChange={v => this.props.handleChange('user', v)}
                         >用户名</InputItem>
                         <InputItem
                             type="password"
-                            onChange={v => this.handleChange('pwd', v)}
+                            onChange={v => this.props.handleChange('pwd', v)}
                         >密码</InputItem>
                         <InputItem
                             type="password"
-                            onChange={v => this.handleChange('repeatPwd', v)}
+                            onChange={v => this.props.handleChange('repeatPwd', v)}
                         >确认密码</InputItem>
-                        <Picker onChange={v => this.handleChange('type', v)} data={district} value={this.state.type} cols={1} className="forss">
+                        <Picker onChange={v => this.props.handleChange('type', v)} data={district} value={this.props.state.type} cols={1} className="forss">
                             <List.Item arrow="horizontal">用户类型</List.Item>
                         </Picker>
                     </List>

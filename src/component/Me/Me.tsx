@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Result, List, WhiteSpace, Modal } from 'antd-mobile';
-// import browserCookies from 'browser-cookies';
+import browserCookies from 'browser-cookies';
 import { logoutSubmit } from '../../store/reducer/user.redux';
+import { Redirect } from 'react-router-dom';
 
 const { alert } = Modal;
 @(connect(
     (state: any) => state.User,
-    {logoutSubmit}
+    { logoutSubmit }
 ) as any)
 
 class Me extends React.Component<any, any> {
@@ -16,13 +17,13 @@ class Me extends React.Component<any, any> {
         this.logout = this.logout.bind(this);
     }
     public logout() {
-        console.log(this);
+        console.log(this.props);
         this.props.logoutSubmit();
-        // browserCookies.erase('user');
+        browserCookies.erase('user');
     }
     public render() {
         console.log(this.props);
-        const { avatar, user, type, company, title, desc, money } = this.props;
+        const { avatar, user, type, company, title, desc, money ,redirectTo} = this.props;
         const { Item } = List;
         const { Brief } = Item;
         return user ? <div>
@@ -51,7 +52,7 @@ class Me extends React.Component<any, any> {
                     退出登录
                 </Item>
             </List>
-        </div> : null
+        </div> : redirectTo === '/login' ? <Redirect to={redirectTo} /> : null
     }
 }
 

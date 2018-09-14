@@ -6,7 +6,7 @@ import NavLink from '../NavLink/NavLink'
 import Boss from '../Boss/Boss';
 import Genius from '../Genius/Genius'
 import Me from '../Me/Me'
-
+import './style.css';
 function Msg() {
     return <div>牛人</div>
 }
@@ -53,11 +53,11 @@ class DashBoard extends React.Component<any, any> {
         console.log(navList);
         const currentNavItem: any = navList.find(v => v.path === pathname) || {};
         return (
-            <section>
+            <section className="dashboard">
                 <header className="fixed-header">
                     <NavBar mode="dark">{currentNavItem.title}</NavBar>
                 </header>
-                <section style={{ marginTop: 45 }}>
+                <section>
                     <Switch>
                         {
                             navList.map((v) => (
