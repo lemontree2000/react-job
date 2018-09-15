@@ -23,7 +23,6 @@ class AuthRouter extends React.Component<IAuthPorps, {}> {
         const { history, location } = this.props;
         const { pathname } = location;
         const routerList = ['/login', '/register']
-        console.log(this.props)
 
 
         if (routerList.indexOf(pathname) > -1) {
@@ -32,14 +31,12 @@ class AuthRouter extends React.Component<IAuthPorps, {}> {
         // 获取用户信息
         Axios.get('/api/user/info')
             .then((res) => {
-                console.log(res);
                 if (res.status === 200) {
                     if (res.data.code === 0) {
                         // 有登陆信息
                         this.props.loadData(res.data.data);
                     } else {
                         // 没有登陆信息
-                        console.log(1);
                         history.replace('/login');
                     }
                 }

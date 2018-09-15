@@ -1,6 +1,6 @@
 .dashboard section{
     position: relative;
     top: 45px;
-    z-index: -2;
+    z-index: 0;
     padding-bottom: 60px;
 }

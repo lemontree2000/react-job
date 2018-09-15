@@ -7,14 +7,25 @@ import Boss from '../Boss/Boss';
 import Genius from '../Genius/Genius'
 import Me from '../Me/Me'
 import './style.css';
-function Msg() {
-    return <div>牛人</div>
-}
+import Msg from '../Msg/Msg';
+import { getMsgList, recvMsg } from '../../store/reducer/chat.redux';
+
 
 @(connect(
-    state => state
+    state => state,
+    {
+        getMsgList,
+        recvMsg
+    }
 ) as any)
+
 class DashBoard extends React.Component<any, any> {
+    public componentDidMount() {
+        if (!this.props.chat.chatMsg.length) {
+            this.props.recvMsg()
+            this.props.getMsgList();
+        }
+    }
     public render() {
         const user = this.props.User;
         const { pathname } = this.props.location;
@@ -50,7 +61,6 @@ class DashBoard extends React.Component<any, any> {
                 component: Me
             }
         ]
-        console.log(navList);
         const currentNavItem: any = navList.find(v => v.path === pathname) || {};
         return (
             <section className="dashboard">

@@ -17,12 +17,10 @@ class Me extends React.Component<any, any> {
         this.logout = this.logout.bind(this);
     }
     public logout() {
-        console.log(this.props);
         this.props.logoutSubmit();
         browserCookies.erase('user');
     }
     public render() {
-        console.log(this.props);
         const { avatar, user, type, company, title, desc, money ,redirectTo} = this.props;
         const { Item } = List;
         const { Brief } = Item;

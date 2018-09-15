@@ -5,9 +5,11 @@ import { combineReducers } from "redux";
 // import { auth } from './reducer/Auth.redux';
 import { User } from './reducer/user.redux';
 import { chatuser } from './reducer/charuser.redux';
+import {chat} from './reducer/chat.redux';
 
 
 export default combineReducers({
     User,
-    chatuser
+    chatuser,
+    chat
 });

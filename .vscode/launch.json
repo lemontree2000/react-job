@@ -13,16 +13,6 @@
             "restart": true,
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "启动程序",
-            "program": "${workspaceFolder}/scripts/start.js",
-            "preLaunchTask": "tsc: build - tsconfig.json",
-            "outFiles": [
-                "${workspaceFolder}/build/dist/**/*.js"
-            ]
         }
     ]
 }

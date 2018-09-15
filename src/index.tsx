@@ -15,6 +15,7 @@ import Dashboard from './component/Dashboard/Dashboard'
 import store from './store/index';
 import './assets/style/index.css';
 import AuthRoute, { IAuthPorps } from './component/AuthRoute/AuthRoute';
+import Chat from './component/Chat/Chat';
 
 
 ReactDOM.render(
@@ -28,6 +29,7 @@ ReactDOM.render(
           <Route path="/geniusinfo" component={GeniusInfo} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/chat/:user" component={Chat} />
           <Route component={Dashboard} />
         </Switch>
       </div>

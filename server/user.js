@@ -3,6 +3,7 @@ const Router = express.Router();
 const utils = require('utility');
 
 const User = require('./model').getModel('user');
+const Chat = require('./model').getModel('chat');
 
 Router.get('/info', (req, res) => {
     const { user } = req.cookies;
@@ -31,6 +32,25 @@ Router.get('/list', (req, res) => {
         });
     })
 });
+
+Router.get('/getMsgList', (req, res) => {
+    const user = req.cookies.user;
+    // '$or': [{ form: user, to: user }] 
+    User.find({}, (e, userdoc) => {
+        let users = {};
+        if (!e) {
+            userdoc.forEach((v) => {
+                users[v._id] = { name: v.user, avatar: v.avatar }
+            })
+            Chat.find({ '$or': [{ from: user }, { to: user }] }, (err, doc) => {
+                if (!err) {
+                    return res.json({ code: 0, msgs: doc, users: users })
+                }
+            })
+        }
+    })
+
+})
 
 // 注册
 Router.post('/register', (req, res) => {
