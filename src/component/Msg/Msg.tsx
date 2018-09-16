@@ -12,8 +12,8 @@ class Msg extends React.Component<any, any> {
     constructor(props: any) {
         super(props)
     }
+    // tslint:disable-next-line:no-empty
     public componentDidMount() {
-        console.log(this.props);
     }
     public render() {
         const chatGroup = {};
@@ -27,7 +27,6 @@ class Msg extends React.Component<any, any> {
         const chatList = (Object).values(chatGroup).sort((a: any, b: any) => {
             const lastitemA = a[a.length - 1].create_time;
             const lastitemb = b[b.length - 1].create_time;
-            console.log(lastitemA, lastitemb)
             return lastitemb - lastitemA;
         })
 
